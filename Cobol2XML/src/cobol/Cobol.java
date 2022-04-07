@@ -112,6 +112,7 @@ public class Cobol implements PubliclyCloneable {
 	 * @return line of commented text from the COBOL program
 	 */
 	public String getCommentLine() {
+		//System.out.println("getComment()");
 		return commentLine;
 	}
 	
@@ -177,6 +178,7 @@ public class Cobol implements PubliclyCloneable {
 	 * @return line of commented text from the COBOL program
 	 */
 	public void setCommentLine(String commentLine) {
+		//System.out.println("setComment(): " + commentLine);
 		this.commentLine = commentLine;
 	}
 

@@ -46,6 +46,8 @@ public class CobolParser {
 		
 		a.add(constantValue() );
 		
+		a.add( CommentLine() );
+		
 		Symbol fullstop = new Symbol('.');
 		fullstop.discard();
 		
@@ -165,6 +167,26 @@ public class CobolParser {
 	s.add(new CaselessLiteral("value") );
 	s.add(new Num() );
 	s.setAssembler(new ConstantValueAssembler());
+	return s;
+	}
+	
+	/*
+	* Return a parser that will recognize the grammar:
+	* 
+	* ***--- comment text
+	*
+	*/
+	protected Parser CommentLine() {
+	//System.out.println("commentLine()");
+	Sequence s = new Sequence();
+	s.add(new Symbol("*"));
+	s.add(new Symbol("*"));
+	s.add(new Symbol("*"));
+	s.add(new Symbol("-"));
+	s.add(new Symbol("-"));
+	s.add(new Symbol("-"));
+	s.add(new Word().setAssembler(new CommentLineAssembler()) );
+	//s.setAssembler(new CommentLineAssembler());
 	return s;
 	}
 
